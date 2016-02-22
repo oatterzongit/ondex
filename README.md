@@ -1,28 +1,11 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Project 02: Ondex
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<br>
+## Always on deck, with Ondex.
+
+A Marketplace app where users can post their possessions for barter. Users will be able to place bids with any thing of choosing, whether it would be currency, other items, and/or services. Users will be able to post their bid for the item, and the seller can accept or reject the bid. The seller can also choose to immediately cut the aution short when a desired bid has been offered and accepted.
+
+<br>
+
+### [Trello](https://trello.com/b/BBncBX5o/project-02-1-current)
