@@ -1,12 +1,18 @@
-
 <div>
 
-  <%= @auctions.each do |auction| %>
+  <% @auctions.each do |auction| %>
 
-    <h1><%= auction.item_name %></h1>
-    <p><%= auction.item_desc %></p>
-    <%= auction.item_img %>
-    <tag><%= auction.tags %></tag>
+    <div class="">
+      <h5><%= link_to auction.item_name, auction %></h5>
+      <article class="">
+        <%= auction.item_desc %>
+      </article>
+      <br>
+      <div class="">
+        <%= auction.item_img %>
+      </div>
+      <%= link_to "Edit", edit_auction_path(auction) %>
+    </div>
 
   <% end %>
 

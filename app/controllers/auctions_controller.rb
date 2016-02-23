@@ -4,6 +4,11 @@ class AuctionsController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
+    @auctions = Auction.all
+  end
+
+  def show
+    @auction = Auction.find(params[:id])
   end
 
   def new
@@ -11,10 +16,26 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    new_auction = Auction.new(self.auction_params)
-    if new_action.save
+    @auction = Auction.new(auction_params)
+    if @auction.save
       redirect_to root_path
     end
   end
 
+  def edit
+  end
+
+  def post
+    @auction = Auction.find(params[:id])
+  end
+
+  def destroy
+    @auction = Auction.find(params[:id])
+  end
+
+
+  private
+    def auction_params
+      params.require(:auction).permit(:item_name, :item_desc, :item_img, :tags)
+    end
 end

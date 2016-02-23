@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+  end
+
   private
     def user_params
       params.require(:user).permit(:f_name, :l_name, :username, :email, :password, :password_confirmation)
