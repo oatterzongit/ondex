@@ -1,0 +1,38 @@
+<h1>Sign Up</h1>
+
+<%= form_for @auction do |f| %>
+
+  <% if @auction.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @auction.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_name, 'What Item are you putting up for auction?' %>
+    <%= f.text_field :item_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :item_desc, 'Description' %>
+    <%= f.text_field :item_desc %>
+  </div>
+
+    <%= :username %>
+
+  <div class="field">
+    <%= f.label :item_img, 'Paperclip attachment function here' %>
+    <%= f.text_field :item_img %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

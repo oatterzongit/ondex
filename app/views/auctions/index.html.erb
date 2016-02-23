@@ -1,0 +1,13 @@
+
+<div>
+
+  <%= @auctions.each do |auction| %>
+
+    <h1><%= auction.item_name %></h1>
+    <p><%= auction.item_desc %></p>
+    <%= auction.item_img %>
+    <tag><%= auction.tags %></tag>
+
+  <% end %>
+
+</div>
