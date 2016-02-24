@@ -1,7 +1,7 @@
 <h4><%= @auction.item_name %></h4>
 <h5>Posted By User: <%= @username %></h5>
 <p><%= @auction.item_desc %></p>
-<div><img src="<%= @auction.item_img %>" alt="item_image"/></div>
+<div><img src="<%= @auction.item_img(:medium) %>" alt="item_image"/></div>
 
 
 <br>

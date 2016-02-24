@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'paperclip', '~> 4.3'
 gem 'ruby-graphviz'
 gem 'pry-rails'
