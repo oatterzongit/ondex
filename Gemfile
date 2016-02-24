@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'paperclip'
+gem 'paperclip', '~> 4.3'
 gem 'ruby-graphviz'
 gem 'pry-rails'
 gem 'rails-erd'

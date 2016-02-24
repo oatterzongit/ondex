@@ -1,4 +1,4 @@
-<%= form_for @auction do |f| %>
+<%= form_for @auction, html: { multipart: true } do |f| %>
 
   <% if @auction.errors.any? %>
     <div class="error_messages">
@@ -18,13 +18,14 @@
   </div>
 
   <div class="field">
+
     <%= f.label :item_desc, 'Description' %>
     <%= f.text_field :item_desc %>
   </div>
 
   <div class="field">
-    <%= f.label :item_img, 'Paperclip attachment function here' %>
-    <%= f.text_field :item_img %>
+    <%= f.label :item_img, 'Attach Image Here!' %>
+    <%= f.file_field :item_img, as: :file %>
   </div>
 
   <div class="actions">

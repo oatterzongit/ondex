@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223225406) do
+ActiveRecord::Schema.define(version: 20160224174800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,21 +19,28 @@ ActiveRecord::Schema.define(version: 20160223225406) do
   create_table "auctions", force: :cascade do |t|
     t.string   "item_name"
     t.text     "item_desc"
-    t.text     "item_img"
     t.string   "tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "user_id"
+    t.string   "item_img_file_name"
+    t.string   "item_img_content_type"
+    t.integer  "item_img_file_size"
+    t.datetime "item_img_updated_at"
   end
 
   add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
 
   create_table "offers", force: :cascade do |t|
     t.text     "offer_desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "user_id"
     t.integer  "auction_id"
+    t.string   "item_img_file_name"
+    t.string   "item_img_content_type"
+    t.integer  "item_img_file_size"
+    t.datetime "item_img_updated_at"
   end
 
   add_index "offers", ["auction_id"], name: "index_offers_on_auction_id", using: :btree
