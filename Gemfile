@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'aws-sdk', '< 2.0'
 gem 'paperclip', '~> 4.3'
 gem 'ruby-graphviz'
 gem 'pry-rails'
