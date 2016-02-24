@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :auctions, only: [:index, :edit, :patch, :show, :new, :create, :destroy]
 
-  resources :offers, only: [:index]
+  resources :offers, only: [:index, :new]
 
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -1,6 +1,11 @@
-<h5><%= @auction.item_name %></h5>
+<h4><%= @auction.item_name %></h4>
+<h5>Posted By User: <%= @username %></h5>
 <p><%= @auction.item_desc %></p>
-<%= @auction.item_img %>
+<div><%= @auction.item_img %></div>
+
+<br>
+<%= link_to "Make an offer!", new_offer_path %>
+<br>
 <br>
 <%= link_to "Edit", edit_auction_path(@auction) %>
 <br>

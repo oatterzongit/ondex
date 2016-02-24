@@ -8,17 +8,21 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
+    @username = User.find_by(id:@auction.user_id).username
   end
 
   def new
     @auction = Auction.new
+    @auction.user_id = current_user.id
   end
 
   def create
     @auction = Auction.new(auction_params)
+    @auction.user_id = current_user.id
     if @auction.save
       redirect_to root_path
     end
+
   end
 
   def edit
@@ -41,6 +45,6 @@ class AuctionsController < ApplicationController
 
   private
     def auction_params
-      params.require(:auction).permit(:item_name, :item_desc, :item_img, :tags)
+      params.require(:auction).permit(:user_id, :item_name, :item_desc, :item_img, :tags)
     end
 end
