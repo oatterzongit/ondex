@@ -7,8 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <header>
-    <p>
+    <div>
       <% if current_user %>
         Welcome, &nbsp;<%= current_user.f_name %>
         &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -18,7 +19,14 @@
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <%= link_to 'Sign Up', new_user_path %>
       <% end %>
-    </p>
+      &nbsp; | &nbsp;
+      <%= link_to 'Home', root_path %>
+      &nbsp; | &nbsp;
+      <%= link_to 'Put your item Ondex!', new_auction_path %>
+    </div>
+
+
+    <p id="notice"><script>Materialize.toast('<%= notice %>', 3000, 'rounded')</script></p>
   </header>
 
 

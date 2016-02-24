@@ -1,6 +1,5 @@
 class AuctionsController < ApplicationController
 
-  before_action :set_auction, only: [:edit, :update, :destroy]
   before_action :authorize, except: [:index, :show]
 
   def index
@@ -23,10 +22,16 @@ class AuctionsController < ApplicationController
   end
 
   def edit
+    @auction = Auction.find(params[:id])
   end
 
-  def post
+  def update
     @auction = Auction.find(params[:id])
+  end
+
+  def patch
+    @auction = Auction.find(params[:id])
+
   end
 
   def destroy

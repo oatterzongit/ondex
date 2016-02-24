@@ -15,3 +15,5 @@
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 //= require_tree .
+var $toastContent = $('<span>I am toast content</span>');
+  Materialize.toast('Test Toast', 5000);

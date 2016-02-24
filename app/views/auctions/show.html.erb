@@ -1,5 +1,7 @@
-<h1><%= @auction.item_name %></h1>
+<h5><%= @auction.item_name %></h5>
 <p><%= @auction.item_desc %></p>
 <%= @auction.item_img %>
 <br>
 <%= link_to "Edit", edit_auction_path(@auction) %>
+<br>
+<%= link_to 'Back', :back %>
