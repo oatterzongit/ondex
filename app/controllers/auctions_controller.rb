@@ -31,11 +31,13 @@ class AuctionsController < ApplicationController
 
   def update
     @auction = Auction.find(params[:id])
-  end
-
-  def patch
-    @auction = Auction.find(params[:id])
-
+    if @auction.update_attributes(auction_params)
+      flash[:notice] = 'Updated Succesfully'
+      redirect_to
+    else
+      flash[:notice] = 'Error: Check form'
+      render :edit
+    end
   end
 
   def destroy

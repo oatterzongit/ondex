@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path, notice: 'Logged in!'
     else
-      render 'new', notice: 'Invalid login credentials - try again!'
+      flash[:notice] = 'Invalid login credentials - try again!'
+      render 'new'
     end
   end
 

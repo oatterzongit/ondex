@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :destroy]
 
-  resources :auctions, only: [:index, :edit, :patch, :show, :new, :create, :destroy]
+  resources :auctions
 
   resources :offers, only: [:index, :new]
 
