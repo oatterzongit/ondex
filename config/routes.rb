@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :destroy]
 
-  resources :auctions
-
-  resources :offers, only: [:index, :new]
+  resources :auctions do
+    resources :offers, only: [:new, :create]
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -3,12 +3,18 @@ class AuctionsController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
-    @auctions = Auction.all
+    @auctions = Auction.order('created_at DESC').all
   end
 
   def show
+    # For Displaying Auctions
     @auction = Auction.find(params[:id])
     @username = User.find_by(id:@auction.user_id).username
+
+    # For Displaying Offers
+    @offers = Auction.find_by(id:@auction.id).offers
+    # @offername = User.find_by(id:@offers.user_id).username
+
   end
 
   def new
@@ -20,6 +26,7 @@ class AuctionsController < ApplicationController
     @auction = Auction.new(auction_params)
     @auction.user_id = current_user.id
     if @auction.save
+      flash[:notice] = 'Your item is on deck!'
       redirect_to root_path
     end
 

@@ -1,36 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ondex</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-  <header>
-    <div>
-      <% if current_user %>
-        Welcome, &nbsp;<%= current_user.f_name %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Logout', session_path('filler'), method: :delete %>
-      <% else %>
-        <%= link_to 'Login', login_path %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
-      &nbsp; | &nbsp;
-      <%= link_to 'Home', root_path %>
-      &nbsp; | &nbsp;
-      <%= link_to 'Put your item Ondex!', new_auction_path %>
-    </div>
+  <head>
+    <title>Ondex, always on deck.</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
 
 
-    <p id="notice"><script>Materialize.toast('<%= notice %>', 3000, 'rounded')</script></p>
-  </header>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  </head>
 
 
-<%= yield %>
+  <body class="container">
 
-</body>
+    <!-- Top Login header -->
+    <header>
+      <br>
+      <div>
+        <% if current_user %>
+
+          <span>Welcome, <%= current_user.f_name %> <span>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <%= link_to 'Logout', session_path('filler'), method: :delete %>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <%= link_to 'My Ondex', root_path %>
+
+        <% else %>
+
+          <span>Ondex</span>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <%= link_to 'Login', login_path %>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <%= link_to 'Sign Up', new_user_path %>
+
+        <% end %>
+      </div>
+
+      <!-- Toast! -->
+      <p id="notice"><script>Materialize.toast('<%= notice %>', 3000, 'rounded')</script></p>
+    </header>
+
+    <!-- Responsive Navbar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="hide-on-med-and-down">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Sell', new_auction_path %></li>
+          <li><%= link_to 'Search', root_path %></li>
+          <li><%= link_to 'Trending', root_path %></li>
+        </ul>
+        <ul class="side-nav" id="slide-out-menu">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Sell', new_auction_path %></li>
+          <li><%= link_to 'Search', root_path %></li>
+          <li><%= link_to 'Trending', root_path %></li>
+
+        </ul>
+      </div>
+    </nav>
+
+
+    <%= yield %>
+
+
+
+  </body>
 </html>

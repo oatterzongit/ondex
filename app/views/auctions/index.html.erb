@@ -2,7 +2,7 @@
 
   <% @auctions.each do |auction| %>
 
-    <div class="">
+    <div class="card-panel">
       <h5><%= link_to auction.item_name, auction %></h5>
       <article class="">
         <%= auction.item_desc %>
@@ -12,6 +12,30 @@
         <img src="<%= auction.item_img(:thumb) %>" alt="item_image"/>
       </div>
     </div>
+
+
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="<%= auction.item_img(:medium) %>">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= auction.item_name %><i class="material-icons right">more_vert</i></span>
+        <p><%= auction.user_id %></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p><%= auction.item_desc %></p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
   <% end %>
 

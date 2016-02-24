@@ -1,12 +1,28 @@
 <h4>Make an offer!</h4>
 
-<% if @offer.errors.any? %>
-  <div class="error_messages">
-    <h2>Form is invalid</h2>
-    <ul>
-      <% for message in @offers.errors.full_messages %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<%= form_for ([@auction, @offer]), html: { multipart: true } do |f| %>
+
+  <% if @auction.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @auction.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :offer_desc, 'What are you offering?' %>
+    <%= f.text_field :offer_desc %>
   </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+
 <% end %>
+
+<%= link_to 'Cancel', auction_path(@auction) %>

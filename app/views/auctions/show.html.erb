@@ -1,13 +1,42 @@
+
+<!-- Item Heading -->
 <h4><%= @auction.item_name %></h4>
 <h5>Posted By User: <%= @username %></h5>
+
+<!-- Display Posted or Updated -->
+<div class="">
+  <% if @auction.updated_at != @auction.created_at %>
+    Updated on: <%= @auction.updated_at %>
+  <% else %>
+    Posted on: <%= @auction.created_at %>
+  <% end %>
+</div>
+
+<!-- Item Description Text Block -->
 <p><%= @auction.item_desc %></p>
 <div><img src="<%= @auction.item_img(:medium) %>" alt="item_image"/></div>
 
+<br>
 
-<br>
-<%= link_to "Make an offer!", new_offer_path %>
-<br>
-<br>
+
+<br><br>
+
 <%= link_to "Edit", edit_auction_path(@auction) %>
-<br>
-<%= link_to 'Back', :back %>
+<%= link_to "Make an offer!", new_auction_offer_path(@auction) %>
+
+
+<br><br>
+
+<!-- Display Current Offers -->
+<div>
+  <h4>Current Offers:</h4>
+
+  <% @offers.each do |offer| %>
+    <div><%= User.find_by(id:offer.user_id).username %><div>
+    <div><%= offer.offer_desc %><div>
+    <div><%= offer.created_at %><div>
+
+  <% end %>
+
+
+</div>
