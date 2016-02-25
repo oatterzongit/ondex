@@ -9,3 +9,11 @@ $secondary-text-color: #727272 !default;
 $divider-color:        #B6B6B6 !default;
 @import "materialize";
 @import "materialize/extras/nouislider";
+
+.margin-buddy {
+  margin: 0 10px 10px 10px;
+}
+
+.bgcolor {
+  background-color: #D1C4E9;
+}

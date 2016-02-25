@@ -1,40 +1,33 @@
+
 <div class="row">
 
-  <div id="ondex-logo" class="valign-wrapper col s12">
+  <div id="ondex-logo" class="col s12">
     <h2 class="center-align">Ondex</h2>
   </div>
 
+
+<!-- Auction Cards -->
   <% @auctions.each do |auction| %>
 
-
-
-
-    <div class="card hoverable col s6">
+    <div class="card hoverable col s12 m12 l5">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="<%= auction.item_img(:medium) %>">
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><%= auction.item_name %><i class="material-icons right">more_vert</i></span>
-        <p>Seller: <%= User.find_by(id:auction.user_id).username %></p>
+        <p>By: <%= User.find_by(id:auction.user_id).username %></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4"><%= link_to auction.item_name, auction %><i class="material-icons right">close</i></span>
-        <p>Seller: <%= User.find_by(id:auction.user_id).username %></p>
-        <p><%= link_to "View Auction Details", auction %></p>
+        <p>By: <%= User.find_by(id:auction.user_id).username %></p>
+        <p><%= link_to "More Details", auction %></p>
         <br>
-        <p><%= auction.item_desc %></p>
+        <p class="flow-text"><%= auction.item_desc %></p>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
 
   <% end %>
 
 </div>
+
+<div class="row">
