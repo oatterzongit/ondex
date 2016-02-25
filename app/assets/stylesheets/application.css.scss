@@ -23,3 +23,16 @@ $divider-color:        #B6B6B6 !default;
 .bgcolor {
   background-color: #D1C4E9;
 }
+
+@media only screen and (min-width: 993px) {
+  .row .col.l6 {
+    width: 49%;
+    margin-right: 0.5%;
+    margin-left: 0.5%;
+  }
+
+  .row .col.l6:nth-child(2n+1) {
+    position: relative;
+    top: 50px;
+  }  
+}
