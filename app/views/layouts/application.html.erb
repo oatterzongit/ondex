@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Ondex, always on deck.</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= csrf_meta_tags %>
   </head>
 
 
@@ -36,13 +36,15 @@
       </div>
 
       <!-- Toast! -->
-      <p id="notice"><script>Materialize.toast('<%= notice %>', 3000, 'rounded')</script></p>
+      <p id="notice"></p>
     </header>
 
     <!-- Responsive Navbar -->
     <nav>
       <div class="nav-wrapper">
-        <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="mobile-nav" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
         <ul class="hide-on-med-and-down">
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'Sell', new_auction_path %></li>
@@ -58,9 +60,11 @@
       </div>
     </nav>
 
-
     <%= yield %>
 
-
+    <%= javascript_include_tag 'application' %>
+    <script>
+      Materialize.toast('<%= notice %>', 3000, 'rounded')
+    </script>
   </body>
 </html>
