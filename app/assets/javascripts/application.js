@@ -12,7 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
 //= require_tree .
 
+$( document ).ready(function(){
+
+  $(".button-collapse").sideNav();
+
+})
+
 var $toastContent = $('<span>I am toast content</span>');
-  Materialize.toast('Test Toast', 5000);
+  Materialize.toast('Toast;)', 5000);
