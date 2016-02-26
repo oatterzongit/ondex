@@ -1,10 +1,10 @@
 class OffersController < ApplicationController
 
+  before_action :authorize, except: [:index, :show]
+
   def new
     @auction = Auction.find(params[:auction_id])
     @offer = Offer.new
-    @offer.auction_id = @auction.id
-    @offer.user_id = current_user.id
   end
 
   def create

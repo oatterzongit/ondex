@@ -24,6 +24,19 @@ $divider-color:        #B6B6B6 !default;
   background-color: #D1C4E9;
 }
 
+.tshadow {
+  text-shadow: 1px 1px 2px black;
+}
+
+.texthighlight {
+  background-color: rgba(81, 45, 168, .7);
+  text-shadow: 1px 1px 2px black;
+}
+
+.accent-color {
+  background-color: #FF5722;
+}
+
 @media only screen and (min-width: 993px) {
   .row .col.l6 {
     width: 49%;
@@ -34,5 +47,5 @@ $divider-color:        #B6B6B6 !default;
   .row .col.l6:nth-child(2n+1) {
     position: relative;
     top: 50px;
-  }  
+  }
 }

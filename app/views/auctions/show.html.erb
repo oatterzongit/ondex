@@ -1,42 +1,134 @@
-
-<!-- Item Heading -->
-<h4><%= @auction.item_name %></h4>
-<h5>Posted By User: <%= @username %></h5>
-
-<!-- Display Posted or Updated -->
-<div class="">
-  <% if @auction.updated_at != @auction.created_at %>
-    Updated on: <%= @auction.updated_at %>
-  <% else %>
-    Posted on: <%= @auction.created_at %>
-  <% end %>
-</div>
-
-<!-- Item Description Text Block -->
-<p><%= @auction.item_desc %></p>
-<div><img src="<%= @auction.item_img(:medium) %>" alt="item_image"/></div>
-
+<br>
 <br>
 
+<!-- Auction Card -->
+<div class="row">
+  <div class="card">
+    <div class="card-image">
+      <img src="<%= @auction.item_img(:medium) %>" alt="item_image"/>
+      <span class="card-title texthighlight"><%= @auction.item_name %></span>
+    </div>
 
-<br><br>
+    <!-- Auction Item Description -->
+    <div class="card-content">
+      <blockquote class="flow-text">
+        <%= @auction.item_desc %>
+        <br>
+        <br>
+        Posted By: <%= @username %>
+      </blockquote>
 
-<%= link_to "Edit", edit_auction_path(@auction) %>
-<%= link_to "Make an offer!", new_auction_offer_path(@auction) %>
+      <!-- Display Posted or Updated -->
+      <div>
+        <% if @auction.updated_at != @auction.created_at %>
+          Updated on: <%= @auction.updated_at %>
+        <% else %>
+          Posted on: <%= @auction.created_at %>
+        <% end %>
+      </div>
+    </div>
+    <!-- END: Auction Item Description :END -->
 
+    <!-- Links Area -->
+    <div class="card-action">
+      <% if current_user %>
 
-<br><br>
+        <% if current_user.id == @auction.user_id %>
+        <!-- Button: Edit Auction -->
+          <%= link_to edit_auction_path(@auction), class: "waves-effect waves-light btn" do %>
+            <i class="material-icons right">cloud</i>
+            Edit your auction
+          <% end %>
+
+        <% else %>
+        <!-- Button: Make Offer -->
+          <%= link_to new_auction_offer_path(@auction), class: "waves-effect waves-light btn" do %>
+            <i class="material-icons right">cloud</i>
+            Make an offer!
+          <% end %>
+        <% end %>
+
+      <% else %>
+      <!-- Button Disabled: Make Offer -->
+        <a class="waves-effect waves-light btn disabled">
+          <i class="material-icons right">cloud</i>
+          Make an offer!
+        </a>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<!-- END: Auction Card :END -->
+
+<br>
+<br>
 
 <!-- Display Current Offers -->
-<div>
-  <h4>Current Offers:</h4>
+<div class="card-panel bgcolor">
+  <h4 class="white-text tshadow">Current Offers:</h4>
+  <br>
+  <div class="container">
 
-  <% @offers.each do |offer| %>
-    <div><%= User.find_by(id:offer.user_id).username %><div>
-    <div><%= offer.offer_desc %><div>
-    <div><%= offer.created_at %><div>
+    <% @offers.each do |offer| %>
+      <div class="card small">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="<%= offer.item_img(:medium) %>" alt="Image Not Uploaded">
+        </div>
 
-  <% end %>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            From: <%= User.find_by(id:offer.user_id).username %>
+            <i class="material-icons right">more_vert</i>
+          </span>
 
+          <!-- Display Posted or Updated -->
+          <p>
+            <% if offer.updated_at != offer.created_at %>
+              Updated on: <%= offer.updated_at %>
+            <% else %>
+              Posted on: <%= offer.created_at %>
+            <% end %>
+          </p>
+        </div>
 
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">
+              From: <%= User.find_by(id:offer.user_id).username %>
+              <i class="material-icons right">close</i>
+            </span>
+
+            <blockquote>
+              <%= offer.offer_desc %>
+            </blockquote>
+
+            <% if current_user %>
+
+              <% if current_user.id == @auction.user_id %>
+              <!-- Button: Accept Offer -->
+                <%= link_to "#", class: "waves-effect waves-light btn" do %>
+                  <i class="material-icons right">cloud</i>
+                  Accept Offer (IB)
+                <% end %>
+              <% end %>
+
+              <!-- Button: Edit Offer -->
+              <% if current_user.id == User.find_by(id:offer.user_id).id %>
+                <%= link_to "#", class: "waves-effect waves-light btn" %>
+                  <i class="material-icons right">cloud</i>
+                  Edit Offer (IB)
+                <% end %>
+              <% end %>
+
+            <% else %>
+            <!-- Button Disabled: Make Offer -->
+              <a class="waves-effect waves-light btn disabled">
+              <i class="material-icons right">cloud</i>
+              Make an offer!
+              </a>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
