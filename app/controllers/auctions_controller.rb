@@ -13,7 +13,6 @@ class AuctionsController < ApplicationController
 
     # For Displaying Offers
     @offers = Auction.find_by(id:@auction.id).offers
-    # @offername = User.find_by(id:@offers.user_id).username
 
   end
 

@@ -1,13 +1,19 @@
-<h1>Login</h1>
-<p id="alert"><%= alert %></p>
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-<% end %>
+<div class="container center-it">
+  <br><br>
+
+  <h1 class="deep-purple-text text-darken-2">Login</h1>
+  <%= form_tag sessions_path do %>
+    <div class="input-field">
+      <i class="material-icons prefix">email</i>
+      <%= label_tag "Email" %>
+      <%= text_field_tag :email, params[:email], id: "email", type: "email", class: "validate" %>
+    </div>
+    <div class="input-field">
+      <i class="material-icons prefix">vpn_key</i>
+      <%= label_tag "Password" %>
+      <%= password_field_tag :password %>
+    </div>
+    <%= submit_tag "Log in", class: "waves-effect waves-light btn deep-orange" %>
+    <i class="material-icons left">verified_user</i>
+  <% end %>
+</div>

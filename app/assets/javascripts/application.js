@@ -17,7 +17,15 @@
 
 $( document ).ready(function(){
   $(".button-collapse").sideNav();
-
+  $('.parallax').parallax();
   // var $toastContent = $('<span>I am toast content</span>');
   // Materialize.toast('Toast ;)', 5000);
+
+  var options = [
+    {selector: '.class', offset: 200, callback: 'globalFunction()' },
+    {selector: '.other-class', offset: 200, callback: 'globalFunction()' },
+  ];
+  Materialize.scrollFire(options);
+
+
 })

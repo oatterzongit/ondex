@@ -10,10 +10,10 @@
   </head>
 
 
-  <body class="container">
+  <body class="container bg-main">
 
     <!-- Top Login header -->
-    <header>
+    <header class="waves-effect waves-light">
       <br>
       <div>
         <% if current_user %>
@@ -40,10 +40,10 @@
     </header>
 
     <!-- Responsive Navbar -->
-    <nav>
+    <nav class="z-depth-3">
       <div class="nav-wrapper">
         <a href="#" data-activates="mobile-nav" class="button-collapse">
-          <i class="material-icons">menu</i>
+          <i class="material-icons">add</i>
         </a>
         <ul class="hide-on-med-and-down">
           <li><%= link_to 'Home', root_path %></li>

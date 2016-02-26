@@ -52,7 +52,7 @@
       <!-- Button Disabled: Make Offer -->
         <a class="waves-effect waves-light btn disabled">
           <i class="material-icons right">cloud</i>
-          Make an offer!
+          Login to offer!
         </a>
       <% end %>
 
@@ -65,22 +65,27 @@
 <br>
 
 <!-- Display Current Offers -->
-<div class="card-panel bgcolor">
-  <h4 class="white-text tshadow">Current Offers:</h4>
+<div class="center-align">
+  <h3 class="deep-purple-text text-darken-2">Current Offers:</h3>
   <br>
   <div class="container">
 
     <% @offers.each do |offer| %>
-      <div class="card small">
+      <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="<%= offer.item_img(:medium) %>" alt="Image Not Uploaded">
+          <% if offer.item_img_file_name == nil %>
+            <div class="activator">...</div>
+          <% else %>
+            <img class="activator" src="<%= offer.item_img(:medium) %>" alt="user-uploaded-image">
+          <% end %>
         </div>
-
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">
+          <span class="card-title activator">
             From: <%= User.find_by(id:offer.user_id).username %>
-            <i class="material-icons right">more_vert</i>
           </span>
+          <p class="flow-text">
+            <%= offer.offer_desc %>
+          </p>
 
           <!-- Display Posted or Updated -->
           <p>
@@ -113,19 +118,14 @@
               <% end %>
 
               <!-- Button: Edit Offer -->
-              <% if current_user.id == User.find_by(id:offer.user_id).id do %>
-                <%= link_to "#", class: "waves-effect waves-light btn" %>
+              <% if current_user.id == User.find_by(id:offer.user_id).id %>
+                <%= link_to "#", class: "waves-effect waves-light btn" do %>
                   <i class="material-icons right">cloud</i>
                   Edit Offer (IB)
                 <% end %>
               <% end %>
 
-            <% else %>
-            <!-- Button Disabled: Make Offer -->
-              <a class="waves-effect waves-light btn disabled">
-              <i class="material-icons right">cloud</i>
-              Make an offer!
-              </a>
+
             <% end %>
           </div>
         </div>

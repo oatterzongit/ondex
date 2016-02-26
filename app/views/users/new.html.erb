@@ -1,50 +1,60 @@
-<h1>Sign Up</h1>
+<div class="container center-it">
 
-<%= form_for @user do |f| %>
+  <h1 class="deep-purple-text text-darken-2">Sign Up</h1>
 
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <%= flash[:notice] = "Form is invalid" %>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li class="red-text"><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="input-field">
+      <i class="material-icons prefix">perm_identity</i>
+      <%= f.label :f_name, 'First Name' %>
+      <%= f.text_field :f_name, type: "text", class: "validate" %>
     </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">perm_identity</i>
+      <%= f.label :l_name, 'Last Name' %>
+      <%= f.text_field :l_name, type: "text", class: "validate" %>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">account_circle</i>
+      <%= f.label :username, 'User Name' %>
+      <%= f.text_field :username, type: "text", class: "validate" %>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">email</i>
+      <%= f.label :email, 'Email Address' %>
+      <%= f.text_field :email, id: "email", type: "email", class: "validate"  %>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">vpn_key</i>
+      <%= f.label :password, 'Password' %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">lock</i>
+      <%= f.label :password_confirmation, 'Confirm your Password' %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "waves-effect waves-light btn deep-orange" %>
+      <i class="material-icons left">add</i>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= f.label :f_name, 'First Name' %>
-    <%= f.text_field :f_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :l_name, 'Last Name' %>
-    <%= f.text_field :l_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username, 'User Name' %>
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email, 'Email Address' %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, 'Password' %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirm your Password' %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-
-<% end %>
+</div>
