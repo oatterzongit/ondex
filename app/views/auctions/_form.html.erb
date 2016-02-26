@@ -1,35 +1,41 @@
-<%= form_for @auction, html: { multipart: true } do |f| %>
+<div class="form">
+  <%= form_for @auction, html: { multipart: true } do |f| %>
 
-  <% if @auction.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @auction.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <% if @auction.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @auction.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="input-field">
+      <i class="material-icons prefix">announcement</i>
+      <%= f.label :item_name, 'Item Name' %>
+      <%= f.text_field :item_name %>
     </div>
+
+    <div class="input-field">
+      <i class="material-icons prefix">speaker_notes</i>
+      <%= f.label :item_desc, 'Description' %>
+      <%= f.text_field :item_desc %>
+    </div>
+
+    <div class="actions">
+      <i class="material-icons prefix">add</i> <br>
+      <%= f.label :item_img, 'Attach Image Here!' %> <br>
+      <%= f.file_field :item_img, as: :file , class: "waves-effect waves-light btn deep-purple lighten-4 deep-purple-text text-darken-2"%>
+    </div>
+
+    <br>
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "waves-effect waves-light btn deep-orange" %>
+    </div>
+
   <% end %>
-
-
-  <div class="field">
-    <%= f.label :item_name, 'Item Name' %>
-    <%= f.text_field :item_name %>
-  </div>
-
-  <div class="field">
-
-    <%= f.label :item_desc, 'Description' %>
-    <%= f.text_field :item_desc %>
-  </div>
-
-  <div class="field">
-    <%= f.label :item_img, 'Attach Image Here!' %>
-    <%= f.file_field :item_img, as: :file %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-
-<% end %>
+</div>

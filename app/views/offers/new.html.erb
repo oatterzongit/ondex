@@ -1,28 +1,40 @@
-<h4>Make an offer!</h4>
+<div class="container">
+  <h4 class="deep-purple-text text-darken-2">Make an offer!</h4>
 
-<%= form_for ([@auction, @offer]), html: { multipart: true } do |f| %>
+  <%= form_for ([@auction, @offer]), html: { multipart: true } do |f| %>
 
-  <% if @auction.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @auction.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <% if @auction.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @auction.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field">
+          <%= f.text_field :offer_desc, id: "textarea1", class: "materialize-textarea" %>
+          <%= f.label :offer_desc, "What are you offering?"%>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "waves-effect waves-light btn deep-orange" %>
+      <%= link_to 'Cancel', auction_path(@auction), class: "right" %>
+
     </div>
+
+
   <% end %>
 
-  <div class="field">
-    <%= f.label :offer_desc, 'What are you offering?' %>
-    <%= f.text_field :offer_desc %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-
-
-<% end %>
-
-<%= link_to 'Cancel', auction_path(@auction) %>
+</div>

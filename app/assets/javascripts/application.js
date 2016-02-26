@@ -27,5 +27,7 @@ $( document ).ready(function(){
   ];
   Materialize.scrollFire(options);
 
+  $('#textarea1').val('Your Offer');
+  $('#textarea1').trigger('autoresize');
 
 })
