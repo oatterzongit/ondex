@@ -113,7 +113,7 @@
               <% end %>
 
               <!-- Button: Edit Offer -->
-              <% if current_user.id == User.find_by(id:offer.user_id).id %>
+              <% if current_user.id == User.find_by(id:offer.user_id).id do %>
                 <%= link_to "#", class: "waves-effect waves-light btn" %>
                   <i class="material-icons right">cloud</i>
                   Edit Offer (IB)
