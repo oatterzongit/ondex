@@ -18,8 +18,6 @@ class OffersController < ApplicationController
     end
   end
 
-
-
   private
 
     def offer_params

@@ -1,13 +1,13 @@
 <div class="container">
   <h4 class="deep-purple-text text-darken-2">Make an offer!</h4>
 
-  <%= form_for ([@auction, @offer]), html: { multipart: true } do |f| %>
+  <%= form_for ([@auction, @offer]) do |f| %>
 
     <% if @auction.errors.any? %>
       <div class="error_messages">
         <h2>Form is invalid</h2>
         <ul>
-          <% for message in @auction.errors.full_messages %>
+          <% for message in @auction.errors.full_messages do %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -25,15 +25,10 @@
     </form>
   </div>
 
-
-
-
     <div class="actions">
       <%= f.submit "Submit", class: "waves-effect waves-light btn deep-orange" %>
       <%= link_to 'Cancel', auction_path(@auction), class: "right" %>
-
     </div>
-
 
   <% end %>
 

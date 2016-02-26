@@ -48,6 +48,8 @@ class AuctionsController < ApplicationController
 
   def destroy
     @auction = Auction.find(params[:id])
+    @auction.destroy
+    redirect_to root_path, notice: "Post Deleted!"
   end
 
 

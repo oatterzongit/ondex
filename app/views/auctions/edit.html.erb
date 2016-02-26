@@ -4,6 +4,14 @@
 
   <%= render 'form' %>
 
-  <%= link_to 'Cancel Edit', @auction %>
+  <br>
+
+  <div class="actions">
+    <%= link_to 'Delete', auction_path(@auction),
+      data: {:confirm => 'Are you sure?'}, :method => :delete,
+      class: "right waves-effect waves-light btn small red" %>
+  </div>
+
+  <%= link_to 'Cancel Edit', @auction, class: "left" %>
 
 </div>
