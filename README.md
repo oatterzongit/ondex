@@ -68,6 +68,8 @@ The following technologies were used to create this web application:
 
 * Ruby 2.2.3
 * Rails 4.2.5
+* PostgreSQL
+* Materialize CSS
 * PRY IRB
 * bcrypt (for user authorization)
 * Rails-ERD
